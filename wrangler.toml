@@ -1,5 +1,5 @@
 #:schema node_modules/wrangler/config-schema.json
-name = "vatsim-radar-next"
+name = "vatsim-radar"
 main = "src/index.ts"
 compatibility_date = "2024-08-15"
 account_id = "f66e2e521ae7089037a41a5f14028b87"
@@ -118,5 +118,12 @@ class_name = "WebSocketHibernationServer"
 API_HOST = "https://next.vatsim-radar.com"
 
 [[env.next.durable_objects.bindings]]
+name = "WEBSOCKET_HIBERNATION_SERVER"
+class_name = "WebSocketHibernationServer"
+
+[env.prod.vars]
+API_HOST = "https://prod.vatsim-radar.com"
+
+[[env.prod.durable_objects.bindings]]
 name = "WEBSOCKET_HIBERNATION_SERVER"
 class_name = "WebSocketHibernationServer"
