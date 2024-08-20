@@ -2,6 +2,7 @@
 name = "vatsim-radar-next"
 main = "src/index.ts"
 compatibility_date = "2024-08-15"
+account_id = "f66e2e521ae7089037a41a5f14028b87"
 
 # Automatically place your workloads in an optimal location to minimize latency.
 # If you are running back-end logic in a Worker, running it closer to your back-end infrastructure
