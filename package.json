@@ -1,0 +1,18 @@
+{
+  "name": "durable-object-starter",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy:next": "wrangler deploy --env=next",
+    "dev": "wrangler dev --env=dev --test-scheduled",
+    "start": "wrangler dev",
+    "cf-typegen": "wrangler types"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240815.0",
+    "@types/node": "^22.4.1",
+    "typescript": "^5.5.4",
+    "wrangler": "^3.72.0"
+  },
+  "packageManager": "yarn@4.4.0"
+}

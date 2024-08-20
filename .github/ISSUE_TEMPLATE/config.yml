@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+    - name: Reports are disabled in this repository
+      url: https://github.com/VATSIM-Radar/vatsim-radar/issues/new/choose
+      about: Please visit main Radar repo to report stuff
