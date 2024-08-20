@@ -135,3 +135,6 @@ class_name = "WebSocketHibernationServer"
 [env.prod]
 name = "vatsim-radar"
 route = { pattern = "https://vatsim-radar.com/cf/*", zone_name = "vatsim-radar.com" }
+
+[limits]
+cpu_ms = 30
