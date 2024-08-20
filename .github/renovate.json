@@ -2,5 +2,9 @@
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"extends": [
 		"VATSIM-Radar/vatsim-radar"
+	],
+	"baseBranches": [
+		"main",
+		"/^release\\/.*/"
 	]
 }
