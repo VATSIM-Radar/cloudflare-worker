@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "deploy:next": "wrangler deploy --env=next",
+    "deploy:prod": "wrangler deploy --env=prod",
     "dev": "wrangler dev --env=dev --test-scheduled",
     "start": "wrangler dev",
     "cf-typegen": "wrangler types"

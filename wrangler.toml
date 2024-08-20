@@ -126,7 +126,7 @@ name = "vatsim-radar-next"
 route = { pattern = "https://next.vatsim-radar.com/cf/*", zone_name = "vatsim-radar.com" }
 
 [env.prod.vars]
-API_HOST = "https://prod.vatsim-radar.com"
+API_HOST = "https://vatsim-radar.com"
 
 [[env.prod.durable_objects.bindings]]
 name = "WEBSOCKET_HIBERNATION_SERVER"
