@@ -74,6 +74,8 @@ export default {
 
 // Durable Object
 export class WebSocketHibernationServer extends DurableObject {
+	state: ArrayBuffer | null = null
+
     constructor(ctx: DurableObjectState, env: Env) {
         super(ctx, env);
 
@@ -111,18 +113,7 @@ export class WebSocketHibernationServer extends DurableObject {
     }
 
     sendData(data: ArrayBuffer) {
-        this.ctx.getWebSockets().forEach(ws => {
-            ws.send(data);
-            // @ts-expect-error Non-standard field
-            ws.failCheck ??= ws.failCheck ?? 0;
-            // @ts-expect-error Non-standard field
-            ws.failCheck++;
-
-            // @ts-expect-error Non-standard field
-            if (ws.failCheck >= 10) {
-                ws.close();
-            }
-        });
+       this.state = data;
     }
 
     fetch(request: Request): Response {
@@ -141,8 +132,9 @@ export class WebSocketHibernationServer extends DurableObject {
     }
 
     async webSocketMessage(ws: WebSocket, message: ArrayBuffer | string) {
-        // @ts-expect-error Non-standard field
-        ws.failCheck = 0;
+        if(message === 'DATA' && this.state) {
+			ws.send(this.state);
+		}
     }
 
     async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {
