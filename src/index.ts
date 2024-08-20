@@ -44,7 +44,10 @@ export default {
                     },
                 });
             }
-            await this.scheduled(env);
+
+			const body = await request.arrayBuffer()
+
+            await this.scheduled(env, body);
 
             return new Response(null, {
                 status: 201,
@@ -62,18 +65,10 @@ export default {
             },
         });
     },
-    async scheduled(env: Env) {
-        const data = await (await fetch(`${env.API_HOST}/api/data/vatsim/live-data/short`, {
-            headers: {
-                'x-worker-auth': env.API_TOKEN,
-            }
-        })).blob()
-
-        const compressedReadableStream = data.stream().pipeThrough(new CompressionStream('gzip'),);
-        const response = await new Response(compressedReadableStream).arrayBuffer();
+    async scheduled(env: Env, body: ArrayBuffer) {
         let id = env.WEBSOCKET_HIBERNATION_SERVER.idFromName("radar");
         let stub = env.WEBSOCKET_HIBERNATION_SERVER.get(id);
-        return stub.sendData(response)
+        return stub.sendData(body)
     },
 };
 
