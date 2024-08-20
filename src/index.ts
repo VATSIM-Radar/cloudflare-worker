@@ -122,9 +122,6 @@ export class WebSocketHibernationServer extends DurableObject {
 
         this.ctx.acceptWebSocket(server);
 
-        //@ts-ignore
-        server.id = Math.random()
-
         return new Response(null, {
             status: 101,
             webSocket: client,
