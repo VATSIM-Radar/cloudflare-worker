@@ -22,9 +22,14 @@ export default {
 		}
 
 		if (request.url.endsWith("/online")) {
-			return {
-				clients: '12345',
-			}
+			return new Response(JSON.stringify({
+				clients: 12345,
+			}), {
+				status: 200,
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
 
 			/*const clients = await stub.getClients();
 
